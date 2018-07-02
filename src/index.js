@@ -62,5 +62,3 @@ export class WhcgLitTextField extends LitElement {
 }
 
 customElements.define("whcg-lit-text-field", WhcgLitTextField);
-
-export { WhcgLitTextField };
