@@ -9,25 +9,32 @@ class WhcgLitTextField extends LitElement {
       placeholder: String,
       suffix: String,
       kind: String,
-      period: String
+      period: String,
+      number: Boolean
     };
   }
 
-  _render({ label, placeholder, value, suffix }) {
+  constructor() {
+    super();
+    this.number = false;
+  }
+
+  _render({ label, placeholder, value, suffix, number }) {
     return html`
-      <vaadin-text-field label="${label}" value="${value}" placeholder="${placeholder}" theme="align-right" on-blur="${this._onBlur.bind(
+    <vaadin-text-field label="${label}" value="${value}" placeholder="${placeholder}" theme="align-right" on-blur="${this._onBlur.bind(
       this
     )}" on-click="${this._onClick.bind(this)}" on-input="${this._onInput.bind(
       this
-    )}" on-change="${this._onChange.bind(this)}">
+    )}" on-change="${this._onChange.bind(this)}" prevent-invalid-input?="${number}" pattern="[0-9]*">
     <div slot="suffix">${suffix}</div>
     </vaadin-text-field>
     `;
   }
 
+
   _onBlur(e) {
     let event = new CustomEvent("blur-changed", {
-      detail: { value: e.path[4].value, input: e.data }
+      detail: { value: e.path[4].value }
     });
     this.dispatchEvent(event);
   }
