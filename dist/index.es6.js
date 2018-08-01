@@ -7,8 +7,7 @@ class WhcgLitTextField extends PolymerElement {
         return html `
         <style include="whcg-lit-text-field-style-default-theme">
             vaadin-text-field {
-                padding: 100px;
-                --material-secondary-text-color: orange;
+                --material-body-text-color: var(--lit-text-field-color);
             }
         </style>
         <vaadin-text-field value="thevalue" label="thelabel"></vaadin-text-field>
