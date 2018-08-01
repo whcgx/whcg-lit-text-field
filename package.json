@@ -16,7 +16,7 @@
   ],
   "devDependencies": {
     "@vaadin/vaadin-text-field": "*",
-    "@polymer/lit-element": "*"
+    "@polymer/polymer": "*"
   },
   "dependencies": {}
 }
