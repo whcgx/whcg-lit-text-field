@@ -1,4 +1,4 @@
-import '.../theme/whcg-lit-text-field-styles.js';
+import '../theme/whcg-lit-text-field-styles.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
