@@ -11,7 +11,8 @@
   "license": "ISC",
   "description": "",
   "files": [
-    "dist"
+    "dist",
+    "theme"
   ],
   "devDependencies": {
     "@vaadin/vaadin-text-field": "*",
