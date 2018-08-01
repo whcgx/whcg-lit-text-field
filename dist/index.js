@@ -2,69 +2,24 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var litElement = require('@polymer/lit-element');
-require('@vaadin/vaadin-text-field');
+require('.../theme/whcg-lit-text-field-styles.js');
+require('@vaadin/vaadin-text-field/src/vaadin-text-field.js');
+var polymerElement_js = require('@polymer/polymer/polymer-element.js');
 
-class WhcgLitTextField extends litElement.LitElement {
-  static get properties() {
-    return {
-      label: String,
-      value: String,
-      placeholder: String,
-      suffix: String,
-      kind: String,
-      period: String,
-      number: Boolean
-    };
-  }
-
-  constructor() {
-    super();
-    this.number = false;
-  }
-
-  _render({ label, placeholder, value, suffix, number }) {
-    return litElement.html`
-    <vaadin-text-field label="${label}" value="${value}" placeholder="${placeholder}" theme="align-right" on-blur="${this._onBlur.bind(
-      this
-    )}" on-click="${this._onClick.bind(this)}" on-input="${this._onInput.bind(
-      this
-    )}" on-change="${this._onChange.bind(this)}" prevent-invalid-input?="${number}" pattern="[0-9]*">
-    <div slot="suffix">${suffix}</div>
-    </vaadin-text-field>
-    `;
-  }
-
-
-  _onBlur(e) {
-    let event = new CustomEvent("blur-changed", {
-      detail: { value: e.path[4].value }
-    });
-    this.dispatchEvent(event);
-  }
-
-  _onChange(e) {
-    let event = new CustomEvent("change-changed", {
-      detail: { value: e.path[0].value }
-    });
-    this.dispatchEvent(event);
-  }
-
-  _onClick(e) {
-    let event = new CustomEvent("click-changed", {
-      detail: { value: e.path[4].value }
-    });
-    this.dispatchEvent(event);
-  }
-
-  _onInput(e) {
-    let event = new CustomEvent("input-changed", {
-      detail: { value: e.path[4].value, input: e.data }
-    });
-    this.dispatchEvent(event);
-  }
+class WhcgLitTextField extends polymerElement_js.PolymerElement {
+    static get template() {
+        return polymerElement_js.html `
+        <style include="whcg-lit-text-field-style-default-theme">
+            vaadin-text-field {
+                padding: 100px;
+                --material-secondary-text-color: orange;
+            }
+        </style>
+        <vaadin-text-field value="thevalue" label="thelabel"></vaadin-text-field>
+    `
+    };   
 }
 
-customElements.define("whcg-lit-text-field", WhcgLitTextField);
+window.customElements.define('whcg-lit-text-field', WhcgLitTextField);
 
 exports.WhcgLitTextField = WhcgLitTextField;
